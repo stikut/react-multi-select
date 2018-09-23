@@ -31,6 +31,7 @@ type Props = {
     ) => string,
     ItemRenderer?: Function,
     selectAllLabel?: string,
+    placeholderLabel?: string,
     isLoading?: boolean,
     disabled?: boolean,
     disableSearch?: boolean,
@@ -61,6 +62,7 @@ class MultiSelect extends Component<Props> {
             options,
             selected,
             valueRenderer,
+            placeholderLabel
         } = this.props;
 
         const noneSelected = selected.length === 0;
@@ -70,7 +72,7 @@ class MultiSelect extends Component<Props> {
 
         if (noneSelected) {
             return <span style={styles.noneSelected}>
-                {customText || "Select some items..."}
+                {customText || placeholderLabel || "Select some items..."}
             </span>;
         }
 
